@@ -17,15 +17,20 @@
 <br>
 
 <div class="container theme-showcase">
-    <div style="color: antiquewhite; background-color: brown;" class="jumbotron">
-        <h1>Favourite quotes</h1>
+    <div class="card">
+        <div class="card-header text-center">
+           <h2>Favourite quotes</h2>
+        </div>
     </div>
+
     {% for r in result %}
-    <div style="color: white; background-color: blueviolet;">
-        <h1>{{r.author}}</h1>
-    </div>
-    <div style="color: black; background-color: burlywood;">
-        <h1>{{r.quote}}</h1>
+    <div class="card mt-3">
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <p>{{r.quote}}</p>
+                <footer class="blockquote-footer"><cite title="Source Title"></cite><b>{{r.author}}</b></cite></footer>
+            </blockquote>
+        </div>
     </div>
     {% endfor %}
 
