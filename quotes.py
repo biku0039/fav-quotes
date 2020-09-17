@@ -12,14 +12,14 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS']= False
 
 db = SQLAlchemy(app)
 
-class Favquotes(db.Model):
+class Favquote(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     author = db.Column(db.String(30))
     quote = db.Column(db.String(2000))
 
 @app.route('/')
 def index():
-    result = Favquotes.query.all()
+    result = Favquote.query.all()
     return render_template('index.html',result=result)
 
 
@@ -32,7 +32,7 @@ def quotes():
 def process():
     author = request.form['author']
     quote = request.form['quote']
-    quoteData = Favquotes(author=author, quote=quote)
+    quoteData = Favquote(author=author, quote=quote)
     db.session.add(quoteData)
     db.session.commit()
 
